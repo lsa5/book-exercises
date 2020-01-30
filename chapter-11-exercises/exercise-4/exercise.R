@@ -2,18 +2,21 @@
 
 # Install the `"nycflights13"` package. Load (`library()`) the package.
 # You'll also need to load `dplyr`
+install.packages("dplyr")
 
 
-# The data frame `flights` should now be accessible to you.
+  # The data frame `flights` should now be accessible to you.
 # Use functions to inspect it: how many rows and columns does it have?
 # What are the names of the columns?
 # Use `??flights` to search for documentation on the data set (for what the 
 # columns represent)
-
+View(flights)
 
 # Use `dplyr` to give the data frame a new column that is the amount of time
 # gained or lost while flying (that is: how much of the delay arriving occured
 # during flight, as opposed to before departing).
+mutate(flights, delayed_in_air == arr_delay - dep_delay)
+flights$delayed_in_air = flights$arr_delay - flights$dep_delay
 
 
 # Use `dplyr` to sort your data frame in descending order by the column you just
@@ -29,11 +32,12 @@
 
 # On average, did flights gain or lose time?
 # Note: use the `na.rm = TRUE` argument to remove NA values from your aggregation
-
+summarize(flights, avg = mean(delayed_in_air, na.rm=TRUE))
 
 # Create a data.frame of flights headed to SeaTac ('SEA'), only including the
 # origin, destination, and the "gain_in_air" column you just created
-
+to_sea <- filter(flights, dest == "SEA")
+View(to_sea)
 
 # On average, did flights to SeaTac gain or loose time?
 
