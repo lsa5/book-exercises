@@ -89,8 +89,7 @@ ggplot(data = diamonds_sample) +
 # Draw a plot of the `diamonds_sample` data (price by carat), with both points 
 # for each diamond AND smoothed lines for each cut (hint: in a separate color)
 # Give the points an `alpha` (transparency) of 0.3 to make the plot look nicer
-ggplot(data = diamonds_sample) +
-  geom
+
 
 ## Bonus
 # Draw a column chart of average diamond prices by clarity, and include 
